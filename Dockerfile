@@ -22,8 +22,8 @@ RUN apk add --update --no-cache \
     openssh-client \
     nodejs \
     nodejs-npm \
-    python \
-    py-pip
+    python3 \
+    python3-pip
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
