@@ -9,7 +9,7 @@ LABEL maintainer="Juan Villela <https://www.juanvillela.dev/>"
 ENV HUGO_VER=0.55.5
 ENV HUGO_TYPE=_extended
 ENV HUGO_ID=hugo${HUGO_TYPE}_${HUGO_VER}
-ENV HUGO_SHA=377b9b0d313556690d376e28cecf216c3e61f1e13c631ebf86068f892ca07709
+ENV HUGO_SHA=f38f0e8beb3d2fee3935e3b51eb1af62ff38600dce36b37e34f6817fdb33abef
 ENV HUGO_URL=https://github.com/gohugoio/hugo/releases/download
 ENV HUGO_TGZ=v${HUGO_VER}/${HUGO_ID}_Linux-64bit.tar.gz
 
