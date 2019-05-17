@@ -1,0 +1,37 @@
+{
+  "name": "docker-hugo-gulp",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fourjuaneight/docker-hugo-gulp.git"
+  },
+  "author": "Juan Villela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fourjuaneight/docker-hugo-gulp/issues"
+  },
+  "homepage": "https://github.com/fourjuaneight/docker-hugo-gulp#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "concurrently": "^4.1.0",
+    "cssnano": "^4.1.4",
+    "gulp": "^4.0.0",
+    "gulp-concat-util": "^0.5.5",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-jsbeautifier": "^3.0.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.1",
+    "html-minifier": "^3.5.21",
+    "postcss-calc": "^7.0.1",
+    "postcss-cli": "^6.0.0",
+    "postcss-custom-properties": "^8.0.10",
+    "postcss-import": "^12.0.1",
+    "postcss-mixins": "^6.2.1",
+    "postcss-nested": "^4.1.0",
+    "postcss-scss": "^2.0.0",
+    "postcss-simple-vars": "^5.0.1"
+  }
+}
