@@ -34,5 +34,5 @@ RUN npm install
 
 RUN curl -Ls ${HUGO_URL}/${HUGO_TGZ} -o /tmp/hugo.tar.gz \
     && tar xf /tmp/hugo.tar.gz -C /tmp \
-    && mv /tmp/hugo /usr/bin/hugo \
+    && mv /tmp/hugo /usr/local/bin/hugo \
     && rm -rf /tmp/hugo* 
