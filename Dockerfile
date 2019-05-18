@@ -1,4 +1,3 @@
-
 # Use Alpine Linux as our base image so that we minimize the overall size our final container, and minimize the surface area of packages that could be out of date.
 FROM alpine:3.8@sha256:a4d41fa0d6bb5b1194189bab4234b1f2abfabb4728bda295f5c53d89766aa046
 
@@ -26,8 +25,7 @@ RUN apk add --update --no-cache \
     py-pip
 
 # Site dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available
+# A wildcard is used to ensure both package.json AND package-lock.json are copied where available
 COPY package*.json ./
 
 RUN pip3 install --upgrade pip setuptools
