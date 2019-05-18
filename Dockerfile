@@ -6,10 +6,9 @@ LABEL maintainer="Juan Villela <https://www.juanvillela.dev/>"
 
 # Config
 ENV HUGO_VER=0.55.5
-ENV HUGO_TYPE=_extended
-ENV HUGO_ID=hugo${HUGO_TYPE}_${HUGO_VER}
+ENV HUGO_BINARY =hugo_extended_${HUGO_VER}_Linux-64bit
 ENV HUGO_URL=https://github.com/gohugoio/hugo/releases/download
-ENV HUGO_TGZ=v${HUGO_VER}/${HUGO_ID}_Linux-64bit.tar.gz
+ENV HUGO_TGZ=v${HUGO_VER}/${HUGO_BINARY}.tar.gz
 
 # Build dependencies
 RUN apk update && apk upgrade
@@ -32,8 +31,6 @@ RUN pip3 install --upgrade pip setuptools
 RUN pip3 install Pygments
 RUN npm install
 
-RUN curl -Ls ${HUGO_URL}/${HUGO_TGZ} -o /tmp/hugo.tar.gz \
-    && tar xf /tmp/hugo.tar.gz -C /tmp \
-    && mv /tmp/hugo /usr/local/bin/hugo \
-    && rm -rf /tmp/hugo* \
+RUN curl -L ${HUGO_URL}/${HUGO_TGZ} | tar -xz \
+    && mv hugo /usr/local/bin/hugo \
     && hugo version
