@@ -1,10 +1,11 @@
 # Use Alpine Linux as our base image so that we minimize the overall size our final container, and minimize the surface area of packages that could be out of date.
-FROM alpine:3.8@sha256:a4d41fa0d6bb5b1194189bab4234b1f2abfabb4728bda295f5c53d89766aa046
+FROM alpine:latest
 
 LABEL description="Docker container for building websites with the Hugo static site generator."
 LABEL maintainer="Juan Villela <https://www.juanvillela.dev/>"
 
 # Config
+ENV GLIBC_VER=2.27-r0
 ENV HUGO_VER=0.55.5
 ENV HUGO_BINARY =hugo_extended_${HUGO_VER}_Linux-64bit
 ENV HUGO_URL=https://github.com/gohugoio/hugo/releases/download
@@ -18,19 +19,27 @@ RUN apk add --update --no-cache \
     curl \
     git \
     openssh-client \
+    libstdc++ \
     nodejs \
-    nodejs-npm \
-    python3 \
-    py-pip
+    nodejs-npm
 
-# Site dependencies
+# Install npm dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied where available
 COPY package*.json ./
-
-RUN pip3 install --upgrade pip setuptools
-RUN pip3 install Pygments
 RUN npm install
 
+# Install glibc: This is required for HUGO-extended (including SASS) to work.
+RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
+    && wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VER/glibc-$GLIBC_VER.apk" \
+    && apk --no-cache add "glibc-$GLIBC_VER.apk" \
+    && rm "glibc-$GLIBC_VER.apk" \
+    && wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VER/glibc-bin-$GLIBC_VER.apk" \
+    && apk --no-cache add "glibc-bin-$GLIBC_VER.apk" \
+    && rm "glibc-bin-$GLIBC_VER.apk" \
+    && wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VER/glibc-i18n-$GLIBC_VER.apk" \
+    && apk --no-cache add "glibc-i18n-$GLIBC_VER.apk" \
+    && rm "glibc-i18n-$GLIBC_VER.apk"
+
+# Install HUGO
 RUN curl -L ${HUGO_URL}/${HUGO_TGZ} | tar -xz \
     && mv hugo /usr/local/bin/hugo \
-    && hugo version
