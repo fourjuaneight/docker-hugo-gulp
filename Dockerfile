@@ -6,10 +6,6 @@ LABEL maintainer="Juan Villela <https://www.juanvillela.dev/>"
 
 # Config
 ENV GLIBC_VER=2.27-r0
-ENV HUGO_VER=0.55.5
-ENV HUGO_BINARY =hugo_extended_${HUGO_VER}_Linux-64bit
-ENV HUGO_URL=https://github.com/gohugoio/hugo/releases/download
-ENV HUGO_TGZ=v${HUGO_VER}/${HUGO_BINARY}.tar.gz
 
 # Build dependencies
 RUN apk update && apk upgrade
@@ -26,7 +22,7 @@ RUN apk add --update --no-cache \
 # Install npm dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied where available
 COPY package*.json ./
-RUN npm install
+RUN npm install -g
 
 # Install glibc: This is required for HUGO-extended (including SASS) to work.
 RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
@@ -41,5 +37,12 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
     && rm "glibc-i18n-$GLIBC_VER.apk"
 
 # Install HUGO
-RUN curl -L ${HUGO_URL}/${HUGO_TGZ} | tar -xz \
+RUN TAG_LATEST_URL="$(curl -LsI -o /dev/null -w %{url_effective} https://github.com/gohugoio/hugo/releases/latest)" \
+    && echo ${TAG_LATEST_URL} \
+    && HUGO_VERSION="$(echo ${TAG_LATEST_URL} | egrep -o '[0-9]+\.[0-9]+\.?[0-9]*')" \
+    && echo ${HUGO_VERSION} \
+    && wget -qO- "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz" | tar xz \
     && mv hugo /usr/local/bin/hugo \
+    && chmod +x /usr/local/bin/hugo
+
+RUN hugo version
