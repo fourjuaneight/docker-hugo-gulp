@@ -5,6 +5,6 @@ Docker image derived from Alpine Linux that includes [Hugo](https://gohugo.io/),
 
 This image was made specifically for use on a particular type of project. It's meant to enable the use of Hugo Pipes, Sass, and critical CSS with the help of Gulp.
 
----
-
-Dependencies are kept to a minimum. Submit a pull request for any additional npm packages that you believe could be useful to most Hugo sites. Please refrain from suggesting packages specific to only yourself. For that, I would suggest a fork to customize for your needs.
+## More
+- [Contributing](https://github.com/fourjuaneight/docker-hugo-gulp/blob/master/CONTRIBUTING.md)
+- [Get in touch](https://www.juanvillela.dev)
