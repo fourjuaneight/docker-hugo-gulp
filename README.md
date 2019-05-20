@@ -8,6 +8,6 @@ This image was made specifically for use on a particular type of project. It's m
 
 ## More
 
-- [Contributing](https://github.com/fourjuaneight/docker-hugo-gulp/blob/master/CONTRIBUTING.md)
+- [Contributing](https://github.com/fourjuaneight/docker-hugo-gulp/blob/master/.github/CONTRIBUTING.md)
 - [Code of Conduct](https://github.com/fourjuaneight/docker-hugo-gulp/blob/master/CODE_OF_CONDUCT.md)
 - [Get in touch](https://www.juanvillela.dev)
