@@ -6,7 +6,7 @@
     "url": "git+https://github.com/fourjuaneight/docker-hugo-gulp.git"
   },
   "author": "Juan Villela",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fourjuaneight/docker-hugo-gulp/issues"
   },

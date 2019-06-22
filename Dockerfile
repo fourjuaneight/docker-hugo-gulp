@@ -1,8 +1,8 @@
 # Use Alpine Linux as our base image so that we minimize the overall size our final container, and minimize the surface area of packages that could be out of date.
 FROM alpine:latest
 
-LABEL description="Docker container for building websites with the Hugo static site generator."
-LABEL maintainer="Juan Villela <https://www.juanvillela.dev/>"
+LABEL description="Docker container for building websites with the Hugo static site generator and Gulp."
+LABEL maintainer="Juan Villela <https://www.juanvillela.dev>"
 
 # Config
 ENV GLIBC_VER=2.27-r0
