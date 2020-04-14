@@ -16,8 +16,8 @@ RUN apk add --update --no-cache \
     git \
     openssh-client \
     libstdc++ \
-    nodejs \
-    nodejs-npm
+    nodejs-lts \
+    npm
 
 # Install npm dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied where available
