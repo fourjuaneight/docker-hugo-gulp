@@ -1,6 +1,6 @@
 {
   "name": "docker-hugo-gulp",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fourjuaneight/docker-hugo-gulp.git"
@@ -13,6 +13,7 @@
   "homepage": "https://github.com/fourjuaneight/docker-hugo-gulp#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
     "postcss-cli": "^6.0.0",
     "postcss-preset-env": "^6.6.0"
   }
