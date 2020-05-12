@@ -4,6 +4,9 @@ FROM node:12.6.0-alpine as hugo
 LABEL description="Docker container for building websites with the Hugo static site generator and Gulp."
 LABEL maintainer="Juan Villela <https://www.juanvillela.dev>"
 
+# Config
+ENV GLIBC_VER=2.27-r0
+
 # Build dependencies
 RUN apk upgrade -U -a \
   && apk add --no-cache \
