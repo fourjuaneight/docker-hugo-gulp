@@ -41,10 +41,6 @@ RUN TAG_LATEST_URL="$(curl -LsI -o /dev/null -w %{url_effective} https://github.
 
 RUN hugo version
 
-FROM node:12.6.0-alpine
-
-COPY --from=hugo /usr/local/bin/hugo /usr/local/bin/hugo
-
 # Install npm dependencies
 COPY package*.json ./
 RUN npm install
