@@ -14,7 +14,7 @@
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-cli": "^2.2.0",
-    "postcss-cli": "^6.0.0",
-    "postcss-preset-env": "^6.6.0"
+    "postcss-cli": "^10.1.0",
+    "postcss-preset-env": "^9.1.4"
   }
 }
